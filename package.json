@@ -1,6 +1,6 @@
 {
   "name": "alchemyst-ai-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The official TypeScript library for the Alchemyst AI SDK API",
   "author": "Alchemyst AI SDK <>",
   "types": "dist/index.d.ts",
