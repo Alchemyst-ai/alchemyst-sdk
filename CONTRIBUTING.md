@@ -55,12 +55,12 @@ $ cd alchemyst-sdk
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link alchemystai
+$ yarn link @alchemystai/sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global alchemystai
+$ pnpm link -—global @alchemystai/sdk
 ```
 
 ## Running tests

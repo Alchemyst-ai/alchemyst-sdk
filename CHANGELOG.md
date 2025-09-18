@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2025-09-18)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* update SDK settings ([6ce572d](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/6ce572d0ba8c2bbf4ae20ba7316512e74726819c))
+
 ## 0.1.0 (2025-09-18)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.0.1...v0.1.0)
