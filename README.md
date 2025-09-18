@@ -22,9 +22,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import AlchemystAI from 'alchemystai';
 
-const client = new AlchemystAI({
-  apiKey: process.env['ALCHEMYST_AI_API_KEY'], // This is the default and can be omitted
-});
+const client = new AlchemystAI();
 
 const response = await client.v1.context.add();
 ```
@@ -37,9 +35,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import AlchemystAI from 'alchemystai';
 
-const client = new AlchemystAI({
-  apiKey: process.env['ALCHEMYST_AI_API_KEY'], // This is the default and can be omitted
-});
+const client = new AlchemystAI();
 
 const response: unknown = await client.v1.context.add();
 ```
