@@ -42,15 +42,15 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/alchemyst-ai-sdk-typescript.git
+$ npm install git+ssh://git@github.com:Alchemyst-ai/alchemyst-sdk.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/alchemyst-ai-sdk-typescript
-$ cd alchemyst-ai-sdk-typescript
+$ git clone https://www.github.com/Alchemyst-ai/alchemyst-sdk
+$ cd alchemyst-sdk
 
 # With yarn
 $ yarn link
