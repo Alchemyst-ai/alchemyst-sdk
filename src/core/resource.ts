@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { AlchemystAISDK } from '../client';
+import type { AlchemystAI } from '../client';
 
 export abstract class APIResource {
-  protected _client: AlchemystAISDK;
+  protected _client: AlchemystAI;
 
-  constructor(client: AlchemystAISDK) {
+  constructor(client: AlchemystAI) {
     this._client = client;
   }
 }

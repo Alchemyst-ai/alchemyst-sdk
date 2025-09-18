@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "alchemyst-ai-sdk/*": ["dist/src/*"],
-      "alchemyst-ai-sdk": ["dist/src/index.ts"]
+      "alchemystai/*": ["dist/src/*"],
+      "alchemystai": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
