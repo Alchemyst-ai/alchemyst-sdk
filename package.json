@@ -1,5 +1,5 @@
 {
-  "name": "alchemystai",
+  "name": "@alchemystai/sdk",
   "version": "0.1.0",
   "description": "The official TypeScript library for the Alchemyst AI API",
   "author": "Alchemyst AI <anuran@getalchemystai.com>",

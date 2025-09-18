@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { AlchemystAI } from 'alchemystai';
+import { AlchemystAI } from '@alchemystai/sdk';
 
 const { stringifyQuery } = AlchemystAI.prototype as any;
 
