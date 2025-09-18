@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^alchemyst-ai-sdk$': '<rootDir>/src/index.ts',
-    '^alchemyst-ai-sdk/(.*)$': '<rootDir>/src/$1',
+    '^alchemystai$': '<rootDir>/src/index.ts',
+    '^alchemystai/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

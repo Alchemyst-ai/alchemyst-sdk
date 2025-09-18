@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'alchemyst-ai-sdk/internal/uploads';
-import { toFile } from 'alchemyst-ai-sdk/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'alchemystai/internal/uploads';
+import { toFile } from 'alchemystai/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
