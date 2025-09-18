@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { AlchemystAISDK } from 'alchemyst-ai-sdk';
+import { AlchemystAI } from 'alchemystai';
 
-const { stringifyQuery } = AlchemystAISDK.prototype as any;
+const { stringifyQuery } = AlchemystAI.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

@@ -1,6 +1,6 @@
 import fs from 'fs';
-import type { ResponseLike } from 'alchemyst-ai-sdk/internal/to-file';
-import { toFile } from 'alchemyst-ai-sdk/core/uploads';
+import type { ResponseLike } from 'alchemystai/internal/to-file';
+import { toFile } from 'alchemystai/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('alchemyst-ai-sdk/core/uploads');
+    const uploads = await import('alchemystai/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(

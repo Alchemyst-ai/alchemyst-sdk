@@ -32,14 +32,14 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['ALCHEMYST_AI_SDK_API_KEY'].
+   * Defaults to process.env['ALCHEMYST_AI_API_KEY'].
    */
   apiKey?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['ALCHEMYST_AI_SDK_BASE_URL'].
+   * Defaults to process.env['ALCHEMYST_AI_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -93,7 +93,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['ALCHEMYST_AI_SDK_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['ALCHEMYST_AI_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -106,9 +106,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Alchemyst AI SDK API.
+ * API Client for interfacing with the Alchemyst AI API.
  */
-export class AlchemystAISDK {
+export class AlchemystAI {
   apiKey: string | null;
 
   baseURL: string;
@@ -124,10 +124,10 @@ export class AlchemystAISDK {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Alchemyst AI SDK API.
+   * API Client for interfacing with the Alchemyst AI API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['ALCHEMYST_AI_SDK_API_KEY'] ?? null]
-   * @param {string} [opts.baseURL=process.env['ALCHEMYST_AI_SDK_BASE_URL'] ?? https://api.example.com] - Override the default base URL for the API.
+   * @param {string | null | undefined} [opts.apiKey=process.env['ALCHEMYST_AI_API_KEY'] ?? null]
+   * @param {string} [opts.baseURL=process.env['ALCHEMYST_AI_BASE_URL'] ?? https://platform-backend.getalchemystai.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -136,25 +136,25 @@ export class AlchemystAISDK {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('ALCHEMYST_AI_SDK_BASE_URL'),
-    apiKey = readEnv('ALCHEMYST_AI_SDK_API_KEY') ?? null,
+    baseURL = readEnv('ALCHEMYST_AI_BASE_URL'),
+    apiKey = readEnv('ALCHEMYST_AI_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.example.com`,
+      baseURL: baseURL || `https://platform-backend.getalchemystai.com`,
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? AlchemystAISDK.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? AlchemystAI.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('ALCHEMYST_AI_SDK_LOG'), "process.env['ALCHEMYST_AI_SDK_LOG']", this) ??
+      parseLogLevel(readEnv('ALCHEMYST_AI_LOG'), "process.env['ALCHEMYST_AI_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -189,7 +189,7 @@ export class AlchemystAISDK {
    * Check whether the base URL is set to its default.
    */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://api.example.com';
+    return this.baseURL !== 'https://platform-backend.getalchemystai.com';
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -229,7 +229,7 @@ export class AlchemystAISDK {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.AlchemystAISDKError(
+        throw new Errors.AlchemystAIError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -701,10 +701,10 @@ export class AlchemystAISDK {
     }
   }
 
-  static AlchemystAISDK = this;
+  static AlchemystAI = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static AlchemystAISDKError = Errors.AlchemystAISDKError;
+  static AlchemystAIError = Errors.AlchemystAIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -723,9 +723,9 @@ export class AlchemystAISDK {
   v1: API.V1 = new API.V1(this);
 }
 
-AlchemystAISDK.V1 = V1;
+AlchemystAI.V1 = V1;
 
-export declare namespace AlchemystAISDK {
+export declare namespace AlchemystAI {
   export type RequestOptions = Opts.RequestOptions;
 
   export { V1 as V1 };

@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "alchemyst-ai-sdk/*": ["src/*"],
-      "alchemyst-ai-sdk": ["src/index.ts"]
+      "alchemystai/*": ["src/*"],
+      "alchemystai": ["src/index.ts"]
     },
     "noEmit": true,
 

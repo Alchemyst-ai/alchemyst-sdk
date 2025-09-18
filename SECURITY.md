@@ -16,7 +16,11 @@ before making any information public.
 ## Reporting Non-SDK Related Security Issues
 
 If you encounter security issues that are not directly related to SDKs but pertain to the services
-or products provided by Alchemyst AI SDK, please follow the respective company's security reporting guidelines.
+or products provided by Alchemyst AI, please follow the respective company's security reporting guidelines.
+
+### Alchemyst AI Terms and Policies
+
+Please contact anuran@getalchemystai.com for any questions or concerns regarding the security of our services.
 
 ---
 
