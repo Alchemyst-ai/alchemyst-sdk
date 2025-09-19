@@ -107,6 +107,11 @@ export interface ContextDeleteParams {
 
 export interface ContextAddParams {
   /**
+   * Type of context being added
+   */
+  context_type?: 'resource' | 'conversation' | 'instruction';
+
+  /**
    * Array of documents with content and additional metadata
    */
   documents?: Array<ContextAddParams.Document>;
