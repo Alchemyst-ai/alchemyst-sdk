@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2025-09-20)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.3.0...v0.3.1)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([34fa6f6](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/34fa6f6b194b76fdfa00448344537635a1101d57))
+
 ## 0.3.0 (2025-09-19)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.2.0...v0.3.0)
