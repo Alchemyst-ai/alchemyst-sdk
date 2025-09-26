@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@alchemystai/sdk/*": ["dist/src/*"],
-      "@alchemystai/sdk": ["dist/src/index.ts"]
+      "@alchemystai/sdk/*": ["./dist/src/*"],
+      "@alchemystai/sdk": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

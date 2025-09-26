@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@alchemystai/sdk/*": ["src/*"],
-      "@alchemystai/sdk": ["src/index.ts"]
+      "@alchemystai/sdk/*": ["./src/*"],
+      "@alchemystai/sdk": ["./src/index.ts"]
     },
     "noEmit": true,
 
