@@ -38,6 +38,13 @@ Methods:
 - <code title="get /api/v1/context/view">client.v1.context.view.<a href="./src/resources/v1/context/view.ts">retrieve</a>() -> ViewRetrieveResponse</code>
 - <code title="get /api/v1/context/view/docs">client.v1.context.view.<a href="./src/resources/v1/context/view.ts">docs</a>() -> unknown</code>
 
+### Memory
+
+Methods:
+
+- <code title="post /api/v1/context/memory/delete">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">delete</a>({ ...params }) -> void</code>
+- <code title="post /api/v1/context/memory/add">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">add</a>({ ...params }) -> void</code>
+
 ## Org
 
 ### Context
