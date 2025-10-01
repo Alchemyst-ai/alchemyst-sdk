@@ -26,7 +26,18 @@ const client = new AlchemystAI({
   apiKey: process.env['ALCHEMYST_AI_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.v1.context.add();
+const response = await client.v1.context.add({
+  context_type: 'resource',
+  documents: [{ content: 'The content of the document' }],
+  metadata: {
+    fileName: 'notes.txt',
+    fileType: 'text/plain',
+    lastModified: '2025-10-01T18:42:40.419Z',
+    fileSize: 1024,
+  },
+  scope: 'internal',
+  source: 'platform.api.context.add',
+});
 ```
 
 ### Request & Response types
@@ -41,7 +52,19 @@ const client = new AlchemystAI({
   apiKey: process.env['ALCHEMYST_AI_API_KEY'], // This is the default and can be omitted
 });
 
-const response: unknown = await client.v1.context.add();
+const params: AlchemystAI.V1.ContextAddParams = {
+  context_type: 'resource',
+  documents: [{ content: 'The content of the document' }],
+  metadata: {
+    fileName: 'notes.txt',
+    fileType: 'text/plain',
+    lastModified: '2025-10-01T18:42:40.419Z',
+    fileSize: 1024,
+  },
+  scope: 'internal',
+  source: 'platform.api.context.add',
+};
+const response: unknown = await client.v1.context.add(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -54,15 +77,28 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.v1.context.add().catch(async (err) => {
-  if (err instanceof AlchemystAI.APIError) {
-    console.log(err.status); // 400
-    console.log(err.name); // BadRequestError
-    console.log(err.headers); // {server: 'nginx', ...}
-  } else {
-    throw err;
-  }
-});
+const response = await client.v1.context
+  .add({
+    context_type: 'resource',
+    documents: [{ content: 'The content of the document' }],
+    metadata: {
+      fileName: 'notes.txt',
+      fileType: 'text/plain',
+      lastModified: '2025-10-01T18:42:40.419Z',
+      fileSize: 1024,
+    },
+    scope: 'internal',
+    source: 'platform.api.context.add',
+  })
+  .catch(async (err) => {
+    if (err instanceof AlchemystAI.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
@@ -94,7 +130,7 @@ const client = new AlchemystAI({
 });
 
 // Or, configure per-request:
-await client.v1.context.add({
+await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 }, scope: 'internal', source: 'platform.api.context.add' }, {
   maxRetries: 5,
 });
 ```
@@ -111,7 +147,7 @@ const client = new AlchemystAI({
 });
 
 // Override per-request:
-await client.v1.context.add({
+await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 }, scope: 'internal', source: 'platform.api.context.add' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -134,11 +170,37 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new AlchemystAI();
 
-const response = await client.v1.context.add().asResponse();
+const response = await client.v1.context
+  .add({
+    context_type: 'resource',
+    documents: [{ content: 'The content of the document' }],
+    metadata: {
+      fileName: 'notes.txt',
+      fileType: 'text/plain',
+      lastModified: '2025-10-01T18:42:40.419Z',
+      fileSize: 1024,
+    },
+    scope: 'internal',
+    source: 'platform.api.context.add',
+  })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.v1.context.add().withResponse();
+const { data: response, response: raw } = await client.v1.context
+  .add({
+    context_type: 'resource',
+    documents: [{ content: 'The content of the document' }],
+    metadata: {
+      fileName: 'notes.txt',
+      fileType: 'text/plain',
+      lastModified: '2025-10-01T18:42:40.419Z',
+      fileSize: 1024,
+    },
+    scope: 'internal',
+    source: 'platform.api.context.add',
+  })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response);
 ```
