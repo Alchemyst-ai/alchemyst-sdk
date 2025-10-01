@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../core/resource';
+import * as MemoryAPI from './memory';
+import { Memory, MemoryAddParams, MemoryDeleteParams } from './memory';
 import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
@@ -11,6 +13,7 @@ import { RequestOptions } from '../../../internal/request-options';
 export class Context extends APIResource {
   traces: TracesAPI.Traces = new TracesAPI.Traces(this._client);
   view: ViewAPI.View = new ViewAPI.View(this._client);
+  memory: MemoryAPI.Memory = new MemoryAPI.Memory(this._client);
 
   /**
    * Deletes context data based on provided parameters
@@ -202,6 +205,7 @@ export interface ContextSearchParams {
 
 Context.Traces = Traces;
 Context.View = View;
+Context.Memory = Memory;
 
 export declare namespace Context {
   export {
@@ -223,5 +227,11 @@ export declare namespace Context {
     View as View,
     type ViewRetrieveResponse as ViewRetrieveResponse,
     type ViewDocsResponse as ViewDocsResponse,
+  };
+
+  export {
+    Memory as Memory,
+    type MemoryDeleteParams as MemoryDeleteParams,
+    type MemoryAddParams as MemoryAddParams,
   };
 }
