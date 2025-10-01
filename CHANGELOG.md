@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.4.0 (2025-10-01)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** manual updates ([3fe9702](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/3fe9702cf45b7f0f2f55c393af525ba2dcc63925))
+
+
+### Performance Improvements
+
+* faster formatting ([be5089a](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/be5089a4c1c056c562a7dc555c37f133dff34364))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([34fa6f6](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/34fa6f6b194b76fdfa00448344537635a1101d57))
+* **internal:** codegen related update ([752b9ef](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/752b9ef8a95cb993a35dabc5f13e56f8e1370c9c))
+* **internal:** fix incremental formatting in some cases ([ba09fcc](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/ba09fcc7c191aa3ba3ea095bb38c1f57840fdf59))
+* **internal:** ignore .eslintcache ([c9b3e97](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/c9b3e972f7bd3a8ca111385751f2edfc4b61dd61))
+* **internal:** remove .eslintcache ([f1ddac5](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/f1ddac5fe83e0eed094f6aaf467ad97c217e21e8))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([5dd1a3c](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/5dd1a3c8c086171acbf83eadd6d36cc11c1562c3))
+
 ## 0.3.0 (2025-09-19)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.2.0...v0.3.0)
