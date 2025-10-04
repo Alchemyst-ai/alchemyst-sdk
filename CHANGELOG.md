@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 (2025-10-04)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([0e58ca0](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/0e58ca00989098aa35932875f6759bba086b3009))
+
 ## 0.5.0 (2025-10-01)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.4.0...v0.5.0)
