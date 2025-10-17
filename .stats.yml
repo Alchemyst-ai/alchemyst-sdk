@@ -1,4 +1,4 @@
 configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/alchemyst-ai%2Falchemyst-ai-sdk-8e20d1887e4ee400feec32abcabe6a5d1c343fe4662fa2c878c289b0a5830a8d.yml
-openapi_spec_hash: 4f600c6f8218e9c3f18daaa71b9fae5c
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/alchemyst-ai%2Falchemyst-ai-sdk-ee3a4ec4897b9adde2e1ff886d61862fb76859716a98317de34e4aeeec05ed0d.yml
+openapi_spec_hash: 54009df72b13264b858c8ac02fe5e521
 config_hash: 76054db9e6c6195475f62073a9899583
