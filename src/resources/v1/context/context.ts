@@ -165,6 +165,11 @@ export namespace ContextAddParams {
     fileType?: string;
 
     /**
+     * Array of Group Name to which the file belongs to
+     */
+    groupName?: Array<string>;
+
+    /**
      * Last modified timestamp
      */
     lastModified?: string;

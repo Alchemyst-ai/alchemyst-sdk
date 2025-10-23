@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0 (2025-10-23)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** api update ([493db9d](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/493db9dab00347af3b804794d42f0cdf86412564))
+* **api:** api update ([34fb7c5](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/34fb7c51973842071275f8f88529774e125c5018))
+
+
+### Chores
+
+* **internal:** use npm pack for build uploads ([8074d75](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/8074d757a654e839f68da823f2f4a58ebd776ba8))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([0e58ca0](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/0e58ca00989098aa35932875f6759bba086b3009))
+
 ## 0.5.0 (2025-10-01)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.4.0...v0.5.0)
