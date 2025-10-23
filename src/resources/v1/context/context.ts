@@ -167,7 +167,7 @@ export namespace ContextAddParams {
     /**
      * Array of Group Name to which the file belongs to
      */
-    groupName?: unknown;
+    groupName?: Array<string>;
 
     /**
      * Last modified timestamp
