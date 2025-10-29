@@ -7,6 +7,22 @@ import { RequestOptions } from '../../../internal/request-options';
 
 export class Memory extends APIResource {
   /**
+   * This endpoint updates memory context data.
+   *
+   * @example
+   * ```ts
+   * await client.v1.context.memory.update();
+   * ```
+   */
+  update(body: MemoryUpdateParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post('/api/v1/context/memory/update', {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
+  }
+
+  /**
    * Deletes memory context data based on provided parameters
    *
    * @example
@@ -36,6 +52,26 @@ export class Memory extends APIResource {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
+  }
+}
+
+export interface MemoryUpdateParams {
+  /**
+   * Array of updated content objects
+   */
+  contents?: Array<MemoryUpdateParams.Content>;
+
+  /**
+   * The ID of the memory to update
+   */
+  memoryId?: string;
+}
+
+export namespace MemoryUpdateParams {
+  export interface Content {
+    content?: string;
+
+    [k: string]: unknown;
   }
 }
 
@@ -77,5 +113,9 @@ export namespace MemoryAddParams {
 }
 
 export declare namespace Memory {
-  export { type MemoryDeleteParams as MemoryDeleteParams, type MemoryAddParams as MemoryAddParams };
+  export {
+    type MemoryUpdateParams as MemoryUpdateParams,
+    type MemoryDeleteParams as MemoryDeleteParams,
+    type MemoryAddParams as MemoryAddParams,
+  };
 }

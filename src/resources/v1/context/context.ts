@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../../core/resource';
 import * as MemoryAPI from './memory';
-import { Memory, MemoryAddParams, MemoryDeleteParams } from './memory';
+import { Memory, MemoryAddParams, MemoryDeleteParams, MemoryUpdateParams } from './memory';
 import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
@@ -236,6 +236,7 @@ export declare namespace Context {
 
   export {
     Memory as Memory,
+    type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
     type MemoryAddParams as MemoryAddParams,
   };
