@@ -20,7 +20,10 @@ export class Context extends APIResource {
    *
    * @example
    * ```ts
-   * const context = await client.v1.context.delete();
+   * const context = await client.v1.context.delete({
+   *   by_doc: true,
+   *   source: 'support-inbox',
+   * });
    * ```
    */
   delete(body: ContextDeleteParams, options?: RequestOptions): APIPromise<unknown> {
@@ -34,7 +37,25 @@ export class Context extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.v1.context.add();
+   * const response = await client.v1.context.add({
+   *   context_type: 'resource',
+   *   documents: [
+   *     {
+   *       content: 'Customer asked about pricing for the Scale plan.',
+   *       containerTag: { ... },
+   *       ticketId: { ... },
+   *     },
+   *   ],
+   *   metadata: {
+   *     fileName: 'support_thread_TCK-1234.txt',
+   *     fileType: 'text/plain',
+   *     groupName: ['support', 'pricing'],
+   *     lastModified: '2025-01-10T12:34:56.000Z',
+   *     fileSize: 2048,
+   *   },
+   *   scope: 'internal',
+   *   source: 'support-inbox',
+   * });
    * ```
    */
   add(body: ContextAddParams, options?: RequestOptions): APIPromise<unknown> {
@@ -49,13 +70,20 @@ export class Context extends APIResource {
    * ```ts
    * const response = await client.v1.context.search({
    *   minimum_similarity_threshold: 0.5,
-   *   query: 'search query for user preferences',
+   *   query:
+   *     'What did the customer ask about pricing for the Scale plan?',
    *   similarity_threshold: 0.8,
+   *   scope: 'internal',
    * });
    * ```
    */
-  search(body: ContextSearchParams, options?: RequestOptions): APIPromise<ContextSearchResponse> {
-    return this._client.post('/api/v1/context/search', { body, ...options });
+  search(params: ContextSearchParams, options?: RequestOptions): APIPromise<ContextSearchResponse> {
+    const { query_metadata, mode, ...body } = params;
+    return this._client.post('/api/v1/context/search', {
+      query: { metadata: query_metadata, mode },
+      body,
+      ...options,
+    });
   }
 }
 
@@ -73,6 +101,9 @@ export namespace ContextSearchResponse {
 
     createdAt?: string;
 
+    /**
+     * Only included when query parameter metadata=true
+     */
     metadata?: unknown;
 
     score?: number;
@@ -103,7 +134,7 @@ export interface ContextDeleteParams {
   source?: string;
 
   /**
-   * Optional user ID
+   * @deprecated Optional user ID
    */
   user_id?: string | null;
 }
@@ -178,32 +209,51 @@ export namespace ContextAddParams {
 
 export interface ContextSearchParams {
   /**
-   * Minimum similarity threshold
+   * Body param: Minimum similarity threshold
    */
   minimum_similarity_threshold: number;
 
   /**
-   * The search query used to search for context data
+   * Body param: The search query used to search for context data
    */
   query: string;
 
   /**
-   * Maximum similarity threshold (must be >= minimum_similarity_threshold)
+   * Body param: Maximum similarity threshold (must be >=
+   * minimum_similarity_threshold)
    */
   similarity_threshold: number;
 
   /**
-   * Additional metadata for the search
+   * Query param: Controls whether metadata is included in the response:
+   *
+   * - metadata=true → metadata will be included in each context item in the
+   *   response.
+   * - metadata=false (or omitted) → metadata will be excluded from the response for
+   *   better performance.
    */
-  metadata?: unknown;
+  query_metadata?: 'true' | 'false';
 
   /**
-   * Search scope
+   * Query param: Controls the search mode:
+   *
+   * - mode=fast → prioritizes speed over completeness.
+   * - mode=standard → performs a comprehensive search (default if omitted).
+   */
+  mode?: 'fast' | 'standard';
+
+  /**
+   * Body param: Additional metadata for the search
+   */
+  body_metadata?: unknown;
+
+  /**
+   * Body param: Search scope
    */
   scope?: 'internal' | 'external';
 
   /**
-   * The ID of the user making the request
+   * @deprecated Body param: The ID of the user making the request
    */
   user_id?: string;
 }
