@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.7.0 (2025-12-03)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([8bb1a91](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/8bb1a919152395dcbc1809f105505ef364f0c87d))
+* **api:** manual updates ([770d854](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/770d8541ae57cb4b343e5dd49a58febdafde9483))
+
+
+### Chores
+
+* **client:** fix logger property type ([c80fbbe](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/c80fbbe54cbd494ef864a3d751d1962e531b394f))
+* **internal:** upgrade eslint ([92e07a0](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/92e07a0ec8f6ef4a7411e4a48e30d7ec95dadd31))
+
 ## 0.6.0 (2025-10-23)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.5.0...v0.6.0)
