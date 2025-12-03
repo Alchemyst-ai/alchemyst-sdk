@@ -11,7 +11,25 @@ export class Memory extends APIResource {
    *
    * @example
    * ```ts
-   * await client.v1.context.memory.update();
+   * await client.v1.context.memory.update({
+   *   contents: [
+   *     {
+   *       content: 'Customer asked about pricing for the Scale plan.',
+   *       metadata: { ... },
+   *       role: { ... },
+   *       id: { ... },
+   *       createdAt: { ... },
+   *     },
+   *     {
+   *       content: 'Updated answer about the Scale plan pricing after discounts.',
+   *       metadata: { ... },
+   *       role: { ... },
+   *       id: { ... },
+   *       createdAt: { ... },
+   *     },
+   *   ],
+   *   memoryId: 'support-thread-TCK-1234',
+   * });
    * ```
    */
   update(body: MemoryUpdateParams, options?: RequestOptions): APIPromise<void> {
@@ -27,7 +45,9 @@ export class Memory extends APIResource {
    *
    * @example
    * ```ts
-   * await client.v1.context.memory.delete();
+   * await client.v1.context.memory.delete({
+   *   memoryId: 'support-thread-TCK-1234',
+   * });
    * ```
    */
   delete(body: MemoryDeleteParams, options?: RequestOptions): APIPromise<void> {
@@ -43,7 +63,25 @@ export class Memory extends APIResource {
    *
    * @example
    * ```ts
-   * await client.v1.context.memory.add();
+   * await client.v1.context.memory.add({
+   *   contents: [
+   *     {
+   *       content: 'Customer asked about pricing for the Scale plan.',
+   *       metadata: { ... },
+   *       role: { ... },
+   *       id: { ... },
+   *       createdAt: { ... },
+   *     },
+   *     {
+   *       content: 'Explained the Scale plan pricing and shared the pricing page link.',
+   *       metadata: { ... },
+   *       role: { ... },
+   *       id: { ... },
+   *       createdAt: { ... },
+   *     },
+   *   ],
+   *   memoryId: 'support-thread-TCK-1234',
+   * });
    * ```
    */
   add(body: MemoryAddParams, options?: RequestOptions): APIPromise<void> {
@@ -87,7 +125,7 @@ export interface MemoryDeleteParams {
   organization_id?: string | null;
 
   /**
-   * Optional user ID
+   * @deprecated Optional user ID
    */
   user_id?: string | null;
 }

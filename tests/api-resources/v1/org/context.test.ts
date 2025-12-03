@@ -10,7 +10,7 @@ const client = new AlchemystAI({
 describe('resource context', () => {
   // Prism tests are disabled
   test.skip('view: only required params', async () => {
-    const responsePromise = client.v1.org.context.view({ userIds: ['string'] });
+    const responsePromise = client.v1.org.context.view({ userIds: ['user_123', 'user_456'] });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,6 +22,6 @@ describe('resource context', () => {
 
   // Prism tests are disabled
   test.skip('view: required and optional params', async () => {
-    const response = await client.v1.org.context.view({ userIds: ['string'] });
+    const response = await client.v1.org.context.view({ userIds: ['user_123', 'user_456'] });
   });
 });

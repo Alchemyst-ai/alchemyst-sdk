@@ -11,7 +11,7 @@ export class Context extends APIResource {
    * @example
    * ```ts
    * const response = await client.v1.org.context.view({
-   *   userIds: ['string'],
+   *   userIds: ['user_123', 'user_456'],
    * });
    * ```
    */
@@ -25,6 +25,9 @@ export interface ContextViewResponse {
 }
 
 export interface ContextViewParams {
+  /**
+   * @deprecated
+   */
   userIds: Array<string>;
 }
 

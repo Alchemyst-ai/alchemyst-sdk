@@ -36,7 +36,7 @@ describe('resource context', () => {
   test.skip('search: only required params', async () => {
     const responsePromise = client.v1.context.search({
       minimum_similarity_threshold: 0.5,
-      query: 'search query for user preferences',
+      query: 'What did the customer ask about pricing for the Scale plan?',
       similarity_threshold: 0.8,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -52,9 +52,11 @@ describe('resource context', () => {
   test.skip('search: required and optional params', async () => {
     const response = await client.v1.context.search({
       minimum_similarity_threshold: 0.5,
-      query: 'search query for user preferences',
+      query: 'What did the customer ask about pricing for the Scale plan?',
       similarity_threshold: 0.8,
-      metadata: {},
+      query_metadata: 'true',
+      mode: 'fast',
+      body_metadata: {},
       scope: 'internal',
       user_id: 'user123',
     });
