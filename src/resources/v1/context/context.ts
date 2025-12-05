@@ -209,7 +209,7 @@ export namespace ContextAddParams {
 
 export interface ContextSearchParams {
   /**
-   * Body param: Minimum similarity threshold
+   * @deprecated Body param: Minimum similarity threshold
    */
   minimum_similarity_threshold: number;
 
