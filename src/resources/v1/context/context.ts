@@ -6,7 +6,7 @@ import { Memory, MemoryAddParams, MemoryDeleteParams, MemoryUpdateParams } from 
 import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
-import { View, ViewDocsResponse, ViewRetrieveResponse } from './view';
+import { View, ViewDocsResponse, ViewRetrieveParams, ViewRetrieveResponse } from './view';
 import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 
@@ -209,7 +209,7 @@ export namespace ContextAddParams {
 
 export interface ContextSearchParams {
   /**
-   * @deprecated Body param: Minimum similarity threshold
+   * Body param: Minimum similarity threshold
    */
   minimum_similarity_threshold: number;
 
@@ -282,6 +282,7 @@ export declare namespace Context {
     View as View,
     type ViewRetrieveResponse as ViewRetrieveResponse,
     type ViewDocsResponse as ViewDocsResponse,
+    type ViewRetrieveParams as ViewRetrieveParams,
   };
 
   export {

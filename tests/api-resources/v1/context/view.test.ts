@@ -21,6 +21,17 @@ describe('resource view', () => {
   });
 
   // Prism tests are disabled
+  test.skip('retrieve: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.v1.context.view.retrieve(
+        { file_name: 'file_name', magic_key: 'magic_key' },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(AlchemystAI.NotFoundError);
+  });
+
+  // Prism tests are disabled
   test.skip('docs', async () => {
     const responsePromise = client.v1.context.view.docs();
     const rawResponse = await responsePromise.asResponse();
