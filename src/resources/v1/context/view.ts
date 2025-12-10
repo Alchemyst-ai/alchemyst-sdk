@@ -13,8 +13,11 @@ export class View extends APIResource {
    * const view = await client.v1.context.view.retrieve();
    * ```
    */
-  retrieve(options?: RequestOptions): APIPromise<ViewRetrieveResponse> {
-    return this._client.get('/api/v1/context/view', options);
+  retrieve(
+    query: ViewRetrieveParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ViewRetrieveResponse> {
+    return this._client.get('/api/v1/context/view', { query, ...options });
   }
 
   /**
@@ -39,6 +42,22 @@ export interface ViewRetrieveResponse {
 
 export type ViewDocsResponse = unknown;
 
+export interface ViewRetrieveParams {
+  /**
+   * Name of the file to retrieve context for
+   */
+  file_name?: string;
+
+  /**
+   * Magic key for context retrieval
+   */
+  magic_key?: string;
+}
+
 export declare namespace View {
-  export { type ViewRetrieveResponse as ViewRetrieveResponse, type ViewDocsResponse as ViewDocsResponse };
+  export {
+    type ViewRetrieveResponse as ViewRetrieveResponse,
+    type ViewDocsResponse as ViewDocsResponse,
+    type ViewRetrieveParams as ViewRetrieveParams,
+  };
 }
