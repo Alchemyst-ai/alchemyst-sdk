@@ -14,18 +14,20 @@ export class Memory extends APIResource {
    * await client.v1.context.memory.update({
    *   contents: [
    *     {
-   *       content: 'Customer asked about pricing for the Scale plan.',
-   *       metadata: { ... },
-   *       role: { ... },
-   *       id: { ... },
-   *       createdAt: { ... },
+   *       content:
+   *         'Customer asked about pricing for the Scale plan.',
+   *       metadata: { messageId: 'msg-1' },
+   *       role: 'user',
+   *       id: 'msg-1',
+   *       createdAt: '2025-01-10T12:34:56.000Z',
    *     },
    *     {
-   *       content: 'Updated answer about the Scale plan pricing after discounts.',
-   *       metadata: { ... },
-   *       role: { ... },
-   *       id: { ... },
-   *       createdAt: { ... },
+   *       content:
+   *         'Updated answer about the Scale plan pricing after discounts.',
+   *       metadata: { messageId: 'msg-2' },
+   *       role: 'assistant',
+   *       id: 'msg-2',
+   *       createdAt: '2025-01-10T12:36:00.000Z',
    *     },
    *   ],
    *   memoryId: 'support-thread-TCK-1234',
@@ -66,18 +68,20 @@ export class Memory extends APIResource {
    * await client.v1.context.memory.add({
    *   contents: [
    *     {
-   *       content: 'Customer asked about pricing for the Scale plan.',
-   *       metadata: { ... },
-   *       role: { ... },
-   *       id: { ... },
-   *       createdAt: { ... },
+   *       content:
+   *         'Customer asked about pricing for the Scale plan.',
+   *       metadata: { messageId: 'msg-1' },
+   *       role: 'user',
+   *       id: 'msg-1',
+   *       createdAt: '2025-01-10T12:34:56.000Z',
    *     },
    *     {
-   *       content: 'Explained the Scale plan pricing and shared the pricing page link.',
-   *       metadata: { ... },
-   *       role: { ... },
-   *       id: { ... },
-   *       createdAt: { ... },
+   *       content:
+   *         'Explained the Scale plan pricing and shared the pricing page link.',
+   *       metadata: { messageId: 'msg-2' },
+   *       role: 'assistant',
+   *       id: 'msg-2',
+   *       createdAt: '2025-01-10T12:35:30.000Z',
    *     },
    *   ],
    *   memoryId: 'support-thread-TCK-1234',

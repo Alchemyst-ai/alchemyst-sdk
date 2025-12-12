@@ -41,9 +41,10 @@ export class Context extends APIResource {
    *   context_type: 'resource',
    *   documents: [
    *     {
-   *       content: 'Customer asked about pricing for the Scale plan.',
-   *       containerTag: { ... },
-   *       ticketId: { ... },
+   *       content:
+   *         'Customer asked about pricing for the Scale plan.',
+   *       containerTag: 'support-emails',
+   *       ticketId: 'TCK-1234',
    *     },
    *   ],
    *   metadata: {
