@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.8.0 (2025-12-12)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([5872f07](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/5872f07211e78b1f816230728d34f619e604fd90))
+* **api:** api update ([50515b1](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/50515b16e663f4bab1bb9a80e83035f8dc6ad0d1))
+
+
+### Bug Fixes
+
+* **docs:** correct snippets for requests with arbitrary and specific params mixed together ([13f3532](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/13f35322b87610698d43886b7e7b7db71206b419))
+* **mcp:** correct code tool API endpoint ([0d1eb9b](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/0d1eb9b5ac5745e465415f9f6f21d05a57063474))
+* **mcp:** return correct lines on typescript errors ([e7fa80d](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/e7fa80dd33b70d6d885eb11458e75ec6175efbd6))
+
+
+### Chores
+
+* **internal:** codegen related update ([e47698e](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/e47698e12d056ae960011147064bc81cff5f0ead))
+* **internal:** codegen related update ([c30fc40](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/c30fc40583c6e43526ffa177f9964e9833f963ee))
+
 ## 0.7.0 (2025-12-03)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.6.0...v0.7.0)
