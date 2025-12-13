@@ -6,7 +6,7 @@ import { Memory, MemoryAddParams, MemoryDeleteParams, MemoryUpdateParams } from 
 import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
-import { View, ViewDocsResponse, ViewRetrieveResponse } from './view';
+import { View, ViewDocsResponse, ViewRetrieveParams, ViewRetrieveResponse } from './view';
 import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 
@@ -41,9 +41,10 @@ export class Context extends APIResource {
    *   context_type: 'resource',
    *   documents: [
    *     {
-   *       content: 'Customer asked about pricing for the Scale plan.',
-   *       containerTag: { ... },
-   *       ticketId: { ... },
+   *       content:
+   *         'Customer asked about pricing for the Scale plan.',
+   *       containerTag: 'support-emails',
+   *       ticketId: 'TCK-1234',
    *     },
    *   ],
    *   metadata: {
@@ -282,6 +283,7 @@ export declare namespace Context {
     View as View,
     type ViewRetrieveResponse as ViewRetrieveResponse,
     type ViewDocsResponse as ViewDocsResponse,
+    type ViewRetrieveParams as ViewRetrieveParams,
   };
 
   export {
