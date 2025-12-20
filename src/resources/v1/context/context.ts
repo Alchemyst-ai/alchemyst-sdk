@@ -79,12 +79,8 @@ export class Context extends APIResource {
    * ```
    */
   search(params: ContextSearchParams, options?: RequestOptions): APIPromise<ContextSearchResponse> {
-    const { query_metadata, mode, ...body } = params;
-    return this._client.post('/api/v1/context/search', {
-      query: { metadata: query_metadata, mode },
-      body,
-      ...options,
-    });
+    const { metadata, mode, ...body } = params;
+    return this._client.post('/api/v1/context/search', { query: { metadata, mode }, body, ...options });
   }
 }
 
@@ -233,7 +229,7 @@ export interface ContextSearchParams {
    * - metadata=false (or omitted) → metadata will be excluded from the response for
    *   better performance.
    */
-  query_metadata?: 'true' | 'false';
+  metadata?: 'true' | 'false';
 
   /**
    * Query param: Controls the search mode:
