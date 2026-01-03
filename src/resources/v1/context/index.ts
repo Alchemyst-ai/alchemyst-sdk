@@ -4,8 +4,10 @@ export {
   Context,
   type ContextDeleteResponse,
   type ContextAddResponse,
+  type ContextSearchResponse,
   type ContextDeleteParams,
   type ContextAddParams,
+  type ContextSearchParams,
 } from './context';
 export {
   Memory,
