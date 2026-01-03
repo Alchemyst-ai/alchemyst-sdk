@@ -9,8 +9,11 @@ const client = new AlchemystAI({
 
 describe('resource memory', () => {
   // Prism tests are disabled
-  test.skip('update', async () => {
-    const responsePromise = client.v1.context.memory.update({});
+  test.skip('update: only required params', async () => {
+    const responsePromise = client.v1.context.memory.update({
+      contents: [{}, {}],
+      memoryId: 'support-thread-TCK-1234',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +24,34 @@ describe('resource memory', () => {
   });
 
   // Prism tests are disabled
-  test.skip('delete', async () => {
-    const responsePromise = client.v1.context.memory.delete({});
+  test.skip('update: required and optional params', async () => {
+    const response = await client.v1.context.memory.update({
+      contents: [
+        {
+          id: 'msg-1',
+          content: 'Customer asked about pricing for the Scale plan.',
+          createdAt: '2025-01-10T12:34:56.000Z',
+          metadata: { messageId: 'bar' },
+          role: 'user',
+        },
+        {
+          id: 'msg-2',
+          content: 'Updated answer about the Scale plan pricing after discounts.',
+          createdAt: '2025-01-10T12:36:00.000Z',
+          metadata: { messageId: 'bar' },
+          role: 'assistant',
+        },
+      ],
+      memoryId: 'support-thread-TCK-1234',
+    });
+  });
+
+  // Prism tests are disabled
+  test.skip('delete: only required params', async () => {
+    const responsePromise = client.v1.context.memory.delete({
+      memoryId: 'support-thread-TCK-1234',
+      organization_id: 'org_01HXYZABC',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -33,8 +62,22 @@ describe('resource memory', () => {
   });
 
   // Prism tests are disabled
-  test.skip('add', async () => {
-    const responsePromise = client.v1.context.memory.add({});
+  test.skip('delete: required and optional params', async () => {
+    const response = await client.v1.context.memory.delete({
+      memoryId: 'support-thread-TCK-1234',
+      organization_id: 'org_01HXYZABC',
+      by_doc: true,
+      by_id: false,
+      user_id: 'user_id',
+    });
+  });
+
+  // Prism tests are disabled
+  test.skip('add: only required params', async () => {
+    const responsePromise = client.v1.context.memory.add({
+      contents: [{}, {}],
+      memoryId: 'support-thread-TCK-1234',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,5 +85,28 @@ describe('resource memory', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('add: required and optional params', async () => {
+    const response = await client.v1.context.memory.add({
+      contents: [
+        {
+          id: 'msg-1',
+          content: 'Customer asked about pricing for the Scale plan.',
+          createdAt: '2025-01-10T12:34:56.000Z',
+          metadata: { messageId: 'bar' },
+          role: 'user',
+        },
+        {
+          id: 'msg-2',
+          content: 'Explained the Scale plan pricing and shared the pricing page link.',
+          createdAt: '2025-01-10T12:35:30.000Z',
+          metadata: { messageId: 'bar' },
+          role: 'assistant',
+        },
+      ],
+      memoryId: 'support-thread-TCK-1234',
+    });
   });
 });

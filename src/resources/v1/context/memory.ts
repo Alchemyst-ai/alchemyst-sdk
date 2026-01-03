@@ -11,7 +11,7 @@ export class Memory extends APIResource {
    *
    * @example
    * ```ts
-   * await client.v1.context.memory.update({
+   * const memory = await client.v1.context.memory.update({
    *   contents: [
    *     {
    *       content:
@@ -34,21 +34,19 @@ export class Memory extends APIResource {
    * });
    * ```
    */
-  update(body: MemoryUpdateParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/api/v1/context/memory/update', {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  update(body: MemoryUpdateParams, options?: RequestOptions): APIPromise<MemoryUpdateResponse> {
+    return this._client.post('/api/v1/context/memory/update', { body, ...options });
   }
 
   /**
-   * Deletes memory context data based on provided parameters
+   * Deletes memory context data based on provided parameters.
    *
    * @example
    * ```ts
    * await client.v1.context.memory.delete({
    *   memoryId: 'support-thread-TCK-1234',
+   *   organization_id: 'org_01HXYZABC',
+   *   by_doc: true,
    * });
    * ```
    */
@@ -65,7 +63,7 @@ export class Memory extends APIResource {
    *
    * @example
    * ```ts
-   * await client.v1.context.memory.add({
+   * const response = await client.v1.context.memory.add({
    *   contents: [
    *     {
    *       content:
@@ -88,32 +86,65 @@ export class Memory extends APIResource {
    * });
    * ```
    */
-  add(body: MemoryAddParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/api/v1/context/memory/add', {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  add(body: MemoryAddParams, options?: RequestOptions): APIPromise<MemoryAddResponse> {
+    return this._client.post('/api/v1/context/memory/add', { body, ...options });
   }
+}
+
+export interface MemoryUpdateResponse {
+  memory_id: string;
+
+  success: boolean;
+
+  updated_entries: number;
+}
+
+export interface MemoryAddResponse {
+  context_id: string;
+
+  success: boolean;
+
+  processed_documents?: number;
 }
 
 export interface MemoryUpdateParams {
   /**
    * Array of updated content objects
    */
-  contents?: Array<MemoryUpdateParams.Content>;
+  contents: Array<MemoryUpdateParams.Content>;
 
   /**
    * The ID of the memory to update
    */
-  memoryId?: string;
+  memoryId: string;
 }
 
 export namespace MemoryUpdateParams {
   export interface Content {
+    /**
+     * Unique ID for the message
+     */
+    id?: string;
+
+    /**
+     * The content of the memory entry
+     */
     content?: string;
 
-    [k: string]: unknown;
+    /**
+     * Creation timestamp
+     */
+    createdAt?: string;
+
+    /**
+     * Additional metadata for the memory entry
+     */
+    metadata?: { [key: string]: unknown };
+
+    /**
+     * Role of the message (e.g., user, assistant)
+     */
+    role?: string;
   }
 }
 
@@ -121,12 +152,22 @@ export interface MemoryDeleteParams {
   /**
    * The ID of the memory to delete
    */
-  memoryId?: string;
+  memoryId: string;
 
   /**
-   * Optional organization ID
+   * Organization ID
    */
-  organization_id?: string | null;
+  organization_id: string | null;
+
+  /**
+   * Delete by document flag
+   */
+  by_doc?: boolean | null;
+
+  /**
+   * Delete by ID flag
+   */
+  by_id?: boolean | null;
 
   /**
    * @deprecated Optional user ID
@@ -138,17 +179,40 @@ export interface MemoryAddParams {
   /**
    * Array of content objects with additional properties allowed
    */
-  contents?: Array<MemoryAddParams.Content>;
+  contents: Array<MemoryAddParams.Content>;
 
   /**
    * The ID of the memory
    */
-  memoryId?: string;
+  memoryId: string;
 }
 
 export namespace MemoryAddParams {
   export interface Content {
+    /**
+     * Unique message ID
+     */
+    id?: string;
+
+    /**
+     * The content of the memory message
+     */
     content?: string;
+
+    /**
+     * Creation timestamp
+     */
+    createdAt?: string;
+
+    /**
+     * Additional metadata for the message
+     */
+    metadata?: { [key: string]: unknown };
+
+    /**
+     * Role of the message sender (e.g., user, assistant)
+     */
+    role?: string;
 
     [k: string]: unknown;
   }
@@ -156,6 +220,8 @@ export namespace MemoryAddParams {
 
 export declare namespace Memory {
   export {
+    type MemoryUpdateResponse as MemoryUpdateResponse,
+    type MemoryAddResponse as MemoryAddResponse,
     type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
     type MemoryAddParams as MemoryAddParams,

@@ -4,11 +4,22 @@ export {
   Context,
   type ContextDeleteResponse,
   type ContextAddResponse,
-  type ContextSearchResponse,
   type ContextDeleteParams,
   type ContextAddParams,
-  type ContextSearchParams,
 } from './context';
-export { Memory, type MemoryUpdateParams, type MemoryDeleteParams, type MemoryAddParams } from './memory';
-export { Traces, type TraceListResponse, type TraceDeleteResponse } from './traces';
-export { View, type ViewRetrieveResponse, type ViewDocsResponse, type ViewRetrieveParams } from './view';
+export {
+  Memory,
+  type MemoryUpdateResponse,
+  type MemoryAddResponse,
+  type MemoryUpdateParams,
+  type MemoryDeleteParams,
+  type MemoryAddParams,
+} from './memory';
+export { Traces, type TraceListResponse, type TraceDeleteResponse, type TraceListParams } from './traces';
+export {
+  View,
+  type ViewRetrieveResponse,
+  type ViewDocsResponse,
+  type ViewRetrieveParams,
+  type ViewDocsParams,
+} from './view';
