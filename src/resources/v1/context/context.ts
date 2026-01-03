@@ -71,6 +71,26 @@ export class Context extends APIResource {
   add(body: ContextAddParams, options?: RequestOptions): APIPromise<ContextAddResponse> {
     return this._client.post('/api/v1/context/add', { body, ...options });
   }
+
+  /**
+   * This endpoint sends a search request to the context processor to retrieve
+   * relevant context data based on the provided query.
+   *
+   * @example
+   * ```ts
+   * const response = await client.v1.context.search({
+   *   minimum_similarity_threshold: 0.5,
+   *   query:
+   *     'What did the customer ask about pricing for the Scale plan?',
+   *   similarity_threshold: 0.8,
+   *   scope: 'internal',
+   * });
+   * ```
+   */
+  search(params: ContextSearchParams, options?: RequestOptions): APIPromise<ContextSearchResponse> {
+    const { metadata, mode, ...body } = params;
+    return this._client.post('/api/v1/context/search', { query: { metadata, mode }, body, ...options });
+  }
 }
 
 export type ContextDeleteResponse = unknown;
@@ -81,6 +101,27 @@ export interface ContextAddResponse {
   success: boolean;
 
   processed_documents?: number;
+}
+
+export interface ContextSearchResponse {
+  contexts?: Array<ContextSearchResponse.Context>;
+}
+
+export namespace ContextSearchResponse {
+  export interface Context {
+    content?: string;
+
+    createdAt?: string;
+
+    /**
+     * Only included when query parameter metadata=true
+     */
+    metadata?: unknown;
+
+    score?: number;
+
+    updatedAt?: string;
+  }
 }
 
 export interface ContextDeleteParams {
@@ -178,6 +219,57 @@ export namespace ContextAddParams {
   }
 }
 
+export interface ContextSearchParams {
+  /**
+   * Body param: Minimum similarity threshold
+   */
+  minimum_similarity_threshold: number;
+
+  /**
+   * Body param: The search query used to search for context data
+   */
+  query: string;
+
+  /**
+   * Body param: Maximum similarity threshold (must be >=
+   * minimum_similarity_threshold)
+   */
+  similarity_threshold: number;
+
+  /**
+   * Query param: Controls whether metadata is included in the response:
+   *
+   * - metadata=true → metadata will be included in each context item in the
+   *   response.
+   * - metadata=false (or omitted) → metadata will be excluded from the response for
+   *   better performance.
+   */
+  metadata?;
+
+  /**
+   * Query param: Controls the search mode:
+   *
+   * - mode=fast → prioritizes speed over completeness.
+   * - mode=standard → performs a comprehensive search (default if omitted).
+   */
+  mode?: 'fast' | 'standard';
+
+  /**
+   * Body param: Additional metadata for the search
+   */
+  body_metadata?: unknown;
+
+  /**
+   * Body param: Search scope
+   */
+  scope?: 'internal' | 'external';
+
+  /**
+   * @deprecated Body param: The ID of the user making the request
+   */
+  user_id?: string;
+}
+
 Context.Traces = Traces;
 Context.View = View;
 Context.Memory = Memory;
@@ -186,8 +278,10 @@ export declare namespace Context {
   export {
     type ContextDeleteResponse as ContextDeleteResponse,
     type ContextAddResponse as ContextAddResponse,
+    type ContextSearchResponse as ContextSearchResponse,
     type ContextDeleteParams as ContextDeleteParams,
     type ContextAddParams as ContextAddParams,
+    type ContextSearchParams as ContextSearchParams,
   };
 
   export {

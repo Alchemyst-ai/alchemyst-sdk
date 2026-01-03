@@ -8,6 +8,8 @@ import {
   ContextAddResponse,
   ContextDeleteParams,
   ContextDeleteResponse,
+  ContextSearchParams,
+  ContextSearchResponse,
 } from './context/context';
 import * as OrgAPI from './org/org';
 import { Org } from './org/org';
@@ -25,8 +27,10 @@ export declare namespace V1 {
     Context as Context,
     type ContextDeleteResponse as ContextDeleteResponse,
     type ContextAddResponse as ContextAddResponse,
+    type ContextSearchResponse as ContextSearchResponse,
     type ContextDeleteParams as ContextDeleteParams,
     type ContextAddParams as ContextAddParams,
+    type ContextSearchParams as ContextSearchParams,
   };
 
   export { Org as Org };

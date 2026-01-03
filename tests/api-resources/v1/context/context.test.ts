@@ -67,4 +67,34 @@ describe('resource context', () => {
       },
     });
   });
+
+  // Prism tests are disabled
+  test.skip('search: only required params', async () => {
+    const responsePromise = client.v1.context.search({
+      minimum_similarity_threshold: 0.5,
+      query: 'What did the customer ask about pricing for the Scale plan?',
+      similarity_threshold: 0.8,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('search: required and optional params', async () => {
+    const response = await client.v1.context.search({
+      minimum_similarity_threshold: 0.5,
+      query: 'What did the customer ask about pricing for the Scale plan?',
+      similarity_threshold: 0.8,
+      metadata: undefined,
+      mode: 'fast',
+      body_metadata: {},
+      scope: 'internal',
+      user_id: 'user123',
+    });
+  });
 });
