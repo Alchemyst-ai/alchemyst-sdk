@@ -29,15 +29,17 @@ const client = new AlchemystAI({
 const response = await client.v1.context.add({
   context_type: 'resource',
   documents: [{ content: 'The content of the document' }],
+  scope: 'internal',
+  source: 'platform.api.context.add',
   metadata: {
     fileName: 'notes.txt',
     fileType: 'text/plain',
     lastModified: '2025-10-01T18:42:40.419Z',
     fileSize: 1024,
   },
-  scope: 'internal',
-  source: 'platform.api.context.add',
 });
+
+console.log(response.context_id);
 ```
 
 ### Request & Response types
@@ -55,16 +57,16 @@ const client = new AlchemystAI({
 const params: AlchemystAI.V1.ContextAddParams = {
   context_type: 'resource',
   documents: [{ content: 'The content of the document' }],
+  scope: 'internal',
+  source: 'platform.api.context.add',
   metadata: {
     fileName: 'notes.txt',
     fileType: 'text/plain',
     lastModified: '2025-10-01T18:42:40.419Z',
     fileSize: 1024,
   },
-  scope: 'internal',
-  source: 'platform.api.context.add',
 };
-const response: unknown = await client.v1.context.add(params);
+const response: AlchemystAI.V1.ContextAddResponse = await client.v1.context.add(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -81,14 +83,14 @@ const response = await client.v1.context
   .add({
     context_type: 'resource',
     documents: [{ content: 'The content of the document' }],
+    scope: 'internal',
+    source: 'platform.api.context.add',
     metadata: {
       fileName: 'notes.txt',
       fileType: 'text/plain',
       lastModified: '2025-10-01T18:42:40.419Z',
       fileSize: 1024,
     },
-    scope: 'internal',
-    source: 'platform.api.context.add',
   })
   .catch(async (err) => {
     if (err instanceof AlchemystAI.APIError) {
@@ -130,7 +132,7 @@ const client = new AlchemystAI({
 });
 
 // Or, configure per-request:
-await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 }, scope: 'internal', source: 'platform.api.context.add' }, {
+await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], scope: 'internal', source: 'platform.api.context.add', metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 } }, {
   maxRetries: 5,
 });
 ```
@@ -147,7 +149,7 @@ const client = new AlchemystAI({
 });
 
 // Override per-request:
-await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 }, scope: 'internal', source: 'platform.api.context.add' }, {
+await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], scope: 'internal', source: 'platform.api.context.add', metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -174,14 +176,14 @@ const response = await client.v1.context
   .add({
     context_type: 'resource',
     documents: [{ content: 'The content of the document' }],
+    scope: 'internal',
+    source: 'platform.api.context.add',
     metadata: {
       fileName: 'notes.txt',
       fileType: 'text/plain',
       lastModified: '2025-10-01T18:42:40.419Z',
       fileSize: 1024,
     },
-    scope: 'internal',
-    source: 'platform.api.context.add',
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -191,18 +193,18 @@ const { data: response, response: raw } = await client.v1.context
   .add({
     context_type: 'resource',
     documents: [{ content: 'The content of the document' }],
+    scope: 'internal',
+    source: 'platform.api.context.add',
     metadata: {
       fileName: 'notes.txt',
       fileType: 'text/plain',
       lastModified: '2025-10-01T18:42:40.419Z',
       fileSize: 1024,
     },
-    scope: 'internal',
-    source: 'platform.api.context.add',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response);
+console.log(response.context_id);
 ```
 
 ### Logging

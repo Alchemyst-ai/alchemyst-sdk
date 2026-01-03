@@ -6,13 +6,11 @@ Types:
 
 - <code><a href="./src/resources/v1/context/context.ts">ContextDeleteResponse</a></code>
 - <code><a href="./src/resources/v1/context/context.ts">ContextAddResponse</a></code>
-- <code><a href="./src/resources/v1/context/context.ts">ContextSearchResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/context/delete">client.v1.context.<a href="./src/resources/v1/context/context.ts">delete</a>({ ...params }) -> unknown</code>
-- <code title="post /api/v1/context/add">client.v1.context.<a href="./src/resources/v1/context/context.ts">add</a>({ ...params }) -> unknown</code>
-- <code title="post /api/v1/context/search">client.v1.context.<a href="./src/resources/v1/context/context.ts">search</a>({ ...params }) -> ContextSearchResponse</code>
+- <code title="post /api/v1/context/add">client.v1.context.<a href="./src/resources/v1/context/context.ts">add</a>({ ...params }) -> ContextAddResponse</code>
 
 ### Traces
 
@@ -23,7 +21,7 @@ Types:
 
 Methods:
 
-- <code title="get /api/v1/context/traces">client.v1.context.traces.<a href="./src/resources/v1/context/traces.ts">list</a>() -> TraceListResponse</code>
+- <code title="get /api/v1/context/traces">client.v1.context.traces.<a href="./src/resources/v1/context/traces.ts">list</a>({ ...params }) -> TraceListResponse</code>
 - <code title="delete /api/v1/context/traces/{traceId}/delete">client.v1.context.traces.<a href="./src/resources/v1/context/traces.ts">delete</a>(traceID) -> TraceDeleteResponse</code>
 
 ### View
@@ -36,15 +34,20 @@ Types:
 Methods:
 
 - <code title="get /api/v1/context/view">client.v1.context.view.<a href="./src/resources/v1/context/view.ts">retrieve</a>({ ...params }) -> ViewRetrieveResponse</code>
-- <code title="get /api/v1/context/view/docs">client.v1.context.view.<a href="./src/resources/v1/context/view.ts">docs</a>() -> unknown</code>
+- <code title="get /api/v1/context/view/docs">client.v1.context.view.<a href="./src/resources/v1/context/view.ts">docs</a>({ ...params }) -> ViewDocsResponse</code>
 
 ### Memory
 
+Types:
+
+- <code><a href="./src/resources/v1/context/memory.ts">MemoryUpdateResponse</a></code>
+- <code><a href="./src/resources/v1/context/memory.ts">MemoryAddResponse</a></code>
+
 Methods:
 
-- <code title="post /api/v1/context/memory/update">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">update</a>({ ...params }) -> void</code>
+- <code title="post /api/v1/context/memory/update">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">update</a>({ ...params }) -> MemoryUpdateResponse</code>
 - <code title="post /api/v1/context/memory/delete">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">delete</a>({ ...params }) -> void</code>
-- <code title="post /api/v1/context/memory/add">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">add</a>({ ...params }) -> void</code>
+- <code title="post /api/v1/context/memory/add">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">add</a>({ ...params }) -> MemoryAddResponse</code>
 
 ## Org
 
