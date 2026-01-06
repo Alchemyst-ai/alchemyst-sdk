@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 (2026-01-06)
+
+Full Changelog: [v0.8.1...v0.9.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.8.1...v0.9.0)
+
+### Features
+
+* **api:** api update ([aa314a6](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/aa314a6b95cb82cbf30763327ecdf43832ee6c62))
+
 ## 0.8.1 (2026-01-06)
 
 Full Changelog: [v0.8.1...v0.8.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.8.1...v0.8.1)
