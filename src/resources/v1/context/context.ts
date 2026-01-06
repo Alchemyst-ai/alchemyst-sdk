@@ -2,14 +2,7 @@
 
 import { APIResource } from '../../../core/resource';
 import * as MemoryAPI from './memory';
-import {
-  Memory,
-  MemoryAddParams,
-  MemoryAddResponse,
-  MemoryDeleteParams,
-  MemoryUpdateParams,
-  MemoryUpdateResponse,
-} from './memory';
+import { Memory, MemoryDeleteParams, MemoryUpdateParams, MemoryUpdateResponse } from './memory';
 import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListParams, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
@@ -244,7 +237,7 @@ export interface ContextSearchParams {
    * - metadata=false (or omitted) → metadata will be excluded from the response for
    *   better performance.
    */
-  metadata?;
+  metadata?: 'true' | 'false';
 
   /**
    * Query param: Controls the search mode:
@@ -302,9 +295,7 @@ export declare namespace Context {
   export {
     Memory as Memory,
     type MemoryUpdateResponse as MemoryUpdateResponse,
-    type MemoryAddResponse as MemoryAddResponse,
     type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
-    type MemoryAddParams as MemoryAddParams,
   };
 }
