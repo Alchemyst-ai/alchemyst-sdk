@@ -90,7 +90,7 @@ describe('resource context', () => {
       minimum_similarity_threshold: 0.5,
       query: 'What did the customer ask about pricing for the Scale plan?',
       similarity_threshold: 0.8,
-      metadata: undefined,
+      metadata: 'true',
       mode: 'fast',
       body_metadata: {},
       scope: 'internal',
