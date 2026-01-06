@@ -21,6 +21,14 @@ describe('resource traces', () => {
   });
 
   // Prism tests are disabled
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.v1.context.traces.list({ limit: 0, page: 0 }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(AlchemystAI.NotFoundError);
+  });
+
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.v1.context.traces.delete('traceId');
     const rawResponse = await responsePromise.asResponse();

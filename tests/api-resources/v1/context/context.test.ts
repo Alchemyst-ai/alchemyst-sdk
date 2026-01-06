@@ -9,8 +9,11 @@ const client = new AlchemystAI({
 
 describe('resource context', () => {
   // Prism tests are disabled
-  test.skip('delete', async () => {
-    const responsePromise = client.v1.context.delete({});
+  test.skip('delete: only required params', async () => {
+    const responsePromise = client.v1.context.delete({
+      organization_id: 'org_01HXYZABC',
+      source: 'support-inbox',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +24,24 @@ describe('resource context', () => {
   });
 
   // Prism tests are disabled
-  test.skip('add', async () => {
-    const responsePromise = client.v1.context.add({});
+  test.skip('delete: required and optional params', async () => {
+    const response = await client.v1.context.delete({
+      organization_id: 'org_01HXYZABC',
+      source: 'support-inbox',
+      by_doc: true,
+      by_id: false,
+      user_id: 'user_id',
+    });
+  });
+
+  // Prism tests are disabled
+  test.skip('add: only required params', async () => {
+    const responsePromise = client.v1.context.add({
+      context_type: 'resource',
+      documents: [{}],
+      scope: 'internal',
+      source: 'support-inbox',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -30,6 +49,23 @@ describe('resource context', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('add: required and optional params', async () => {
+    const response = await client.v1.context.add({
+      context_type: 'resource',
+      documents: [{ content: 'Customer asked about pricing for the Scale plan.' }],
+      scope: 'internal',
+      source: 'support-inbox',
+      metadata: {
+        fileName: 'support_thread_TCK-1234.txt',
+        fileSize: 2048,
+        fileType: 'text/plain',
+        groupName: ['support', 'pricing'],
+        lastModified: '2025-01-10T12:34:56.000Z',
+      },
+    });
   });
 
   // Prism tests are disabled

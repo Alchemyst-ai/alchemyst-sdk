@@ -7,19 +7,22 @@ import { path } from '../../../internal/utils/path';
 
 export class Traces extends APIResource {
   /**
-   * Retrieves a list of traces for the authenticated user
+   * Returns paginated traces for the authenticated user within their organization.
    *
    * @example
    * ```ts
    * const traces = await client.v1.context.traces.list();
    * ```
    */
-  list(options?: RequestOptions): APIPromise<TraceListResponse> {
-    return this._client.get('/api/v1/context/traces', options);
+  list(
+    query: TraceListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<TraceListResponse> {
+    return this._client.get('/api/v1/context/traces', { query, ...options });
   }
 
   /**
-   * Deletes a data trace for the authenticated user with the specified trace ID
+   * Deletes a data trace for the authenticated user with the specified trace ID.
    *
    * @example
    * ```ts
@@ -34,22 +37,40 @@ export class Traces extends APIResource {
 }
 
 export interface TraceListResponse {
-  traces?: Array<TraceListResponse.Trace>;
+  pagination: TraceListResponse.Pagination;
+
+  traces: Array<TraceListResponse.Trace>;
 }
 
 export namespace TraceListResponse {
+  export interface Pagination {
+    hasNextPage: boolean;
+
+    hasPrevPage: boolean;
+
+    limit: number;
+
+    page: number;
+
+    total: number;
+
+    totalPages: number;
+  }
+
   export interface Trace {
-    _id?: string;
+    _id: string;
 
-    createdAt?: string;
+    createdAt: string;
 
-    data?: unknown;
+    data: unknown;
 
-    type?: string;
+    organizationId: string;
 
-    updatedAt?: string;
+    type: string;
 
-    userId?: string;
+    updatedAt: string;
+
+    userId: string;
   }
 }
 
@@ -57,9 +78,56 @@ export interface TraceDeleteResponse {
   /**
    * The deleted trace data
    */
-  trace?: unknown;
+  trace: TraceDeleteResponse.Trace;
+}
+
+export namespace TraceDeleteResponse {
+  /**
+   * The deleted trace data
+   */
+  export interface Trace {
+    _id?: string;
+
+    createdAt?: string;
+
+    data?: Trace.Data;
+
+    organizationId?: string;
+
+    type?: string;
+
+    updatedAt?: string;
+
+    userId?: string;
+  }
+
+  export namespace Trace {
+    export interface Data {
+      fileName?: string;
+
+      query?: string;
+
+      source?: string;
+    }
+  }
+}
+
+export interface TraceListParams {
+  /**
+   * Number of traces per page
+   */
+  limit?: number;
+
+  /**
+   * Page number for pagination
+   */
+  page?: number;
 }
 
 export declare namespace Traces {
-  export { type TraceListResponse as TraceListResponse, type TraceDeleteResponse as TraceDeleteResponse };
+  export {
+    type TraceListResponse as TraceListResponse,
+    type TraceDeleteResponse as TraceDeleteResponse,
+    type TraceListParams as TraceListParams,
+  };
 }
