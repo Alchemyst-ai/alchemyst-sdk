@@ -69,20 +69,15 @@ export class Memory extends APIResource {
    *       content:
    *         'Customer asked about pricing for the Scale plan.',
    *       metadata: { messageId: 'msg-1' },
-   *       role: 'user',
-   *       id: 'msg-1',
-   *       createdAt: '2025-01-10T12:34:56.000Z',
    *     },
    *     {
    *       content:
    *         'Explained the Scale plan pricing and shared the pricing page link.',
    *       metadata: { messageId: 'msg-2' },
-   *       role: 'assistant',
-   *       id: 'msg-2',
-   *       createdAt: '2025-01-10T12:35:30.000Z',
    *     },
    *   ],
    *   memoryId: 'support-thread-TCK-1234',
+   *   metadata: { groupName: ['support', 'pricing'] },
    * });
    * ```
    */
@@ -177,7 +172,7 @@ export interface MemoryDeleteParams {
 
 export interface MemoryAddParams {
   /**
-   * Array of content objects with additional properties allowed
+   * Array of content objects with metadata
    */
   contents: Array<MemoryAddParams.Content>;
 
@@ -185,34 +180,44 @@ export interface MemoryAddParams {
    * The ID of the memory
    */
   memoryId: string;
+
+  /**
+   * Optional metadata with groupName defaulting to ["default"]
+   */
+  metadata?: MemoryAddParams.Metadata;
 }
 
 export namespace MemoryAddParams {
   export interface Content {
     /**
-     * Unique message ID
-     */
-    id?: string;
-
-    /**
      * The content of the memory message
      */
-    content?: string;
+    content: string;
 
-    /**
-     * Creation timestamp
-     */
-    createdAt?: string;
+    metadata: Content.Metadata;
 
-    /**
-     * Additional metadata for the message
-     */
-    metadata?: { [key: string]: unknown };
+    [k: string]: unknown;
+  }
 
+  export namespace Content {
+    export interface Metadata {
+      /**
+       * Unique message ID
+       */
+      messageId: string;
+
+      [k: string]: unknown;
+    }
+  }
+
+  /**
+   * Optional metadata with groupName defaulting to ["default"]
+   */
+  export interface Metadata {
     /**
-     * Role of the message sender (e.g., user, assistant)
+     * Group names for the memory context
      */
-    role?: string;
+    groupName?: Array<string>;
 
     [k: string]: unknown;
   }

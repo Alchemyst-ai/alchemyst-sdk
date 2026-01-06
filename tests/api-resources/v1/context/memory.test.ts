@@ -75,7 +75,13 @@ describe('resource memory', () => {
   // Prism tests are disabled
   test.skip('add: only required params', async () => {
     const responsePromise = client.v1.context.memory.add({
-      contents: [{}, {}],
+      contents: [
+        { content: 'Customer asked about pricing for the Scale plan.', metadata: { messageId: 'msg-1' } },
+        {
+          content: 'Explained the Scale plan pricing and shared the pricing page link.',
+          metadata: { messageId: 'msg-2' },
+        },
+      ],
       memoryId: 'support-thread-TCK-1234',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -91,22 +97,14 @@ describe('resource memory', () => {
   test.skip('add: required and optional params', async () => {
     const response = await client.v1.context.memory.add({
       contents: [
+        { content: 'Customer asked about pricing for the Scale plan.', metadata: { messageId: 'msg-1' } },
         {
-          id: 'msg-1',
-          content: 'Customer asked about pricing for the Scale plan.',
-          createdAt: '2025-01-10T12:34:56.000Z',
-          metadata: { messageId: 'bar' },
-          role: 'user',
-        },
-        {
-          id: 'msg-2',
           content: 'Explained the Scale plan pricing and shared the pricing page link.',
-          createdAt: '2025-01-10T12:35:30.000Z',
-          metadata: { messageId: 'bar' },
-          role: 'assistant',
+          metadata: { messageId: 'msg-2' },
         },
       ],
       memoryId: 'support-thread-TCK-1234',
+      metadata: { groupName: ['support', 'pricing'] },
     });
   });
 });
