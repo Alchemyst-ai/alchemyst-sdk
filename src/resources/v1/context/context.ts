@@ -244,7 +244,7 @@ export interface ContextSearchParams {
    * - metadata=false (or omitted) → metadata will be excluded from the response for
    *   better performance.
    */
-  metadata?: 'true' | 'false';
+  metadata?;
 
   /**
    * Query param: Controls the search mode:
