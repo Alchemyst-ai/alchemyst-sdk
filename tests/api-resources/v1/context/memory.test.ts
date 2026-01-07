@@ -71,4 +71,33 @@ describe('resource memory', () => {
       user_id: 'user_id',
     });
   });
+
+  // Prism tests are disabled
+  test.skip('add: only required params', async () => {
+    const responsePromise = client.v1.context.memory.add({
+      contents: [{ content: 'Customer asked about pricing for the Scale plan.' }],
+      memoryId: 'support-thread-TCK-1234',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('add: required and optional params', async () => {
+    const response = await client.v1.context.memory.add({
+      contents: [
+        {
+          content: 'Customer asked about pricing for the Scale plan.',
+          metadata: { messageId: 'messageId' },
+        },
+      ],
+      memoryId: 'support-thread-TCK-1234',
+      metadata: { groupName: ['string'] },
+    });
+  });
 });
