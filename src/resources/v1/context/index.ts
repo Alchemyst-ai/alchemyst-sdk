@@ -12,10 +12,8 @@ export {
 export {
   Memory,
   type MemoryUpdateResponse,
-  type MemoryAddResponse,
   type MemoryUpdateParams,
   type MemoryDeleteParams,
-  type MemoryAddParams,
 } from './memory';
 export { Traces, type TraceListResponse, type TraceDeleteResponse, type TraceListParams } from './traces';
 export {

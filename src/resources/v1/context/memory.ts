@@ -57,33 +57,6 @@ export class Memory extends APIResource {
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
-
-  /**
-   * This endpoint adds memory context data, fetching chat history if needed.
-   *
-   * @example
-   * ```ts
-   * const response = await client.v1.context.memory.add({
-   *   contents: [
-   *     {
-   *       content:
-   *         'Customer asked about pricing for the Scale plan.',
-   *       metadata: { messageId: 'msg-1' },
-   *     },
-   *     {
-   *       content:
-   *         'Explained the Scale plan pricing and shared the pricing page link.',
-   *       metadata: { messageId: 'msg-2' },
-   *     },
-   *   ],
-   *   memoryId: 'support-thread-TCK-1234',
-   *   metadata: { groupName: ['support', 'pricing'] },
-   * });
-   * ```
-   */
-  add(body: MemoryAddParams, options?: RequestOptions): APIPromise<MemoryAddResponse> {
-    return this._client.post('/api/v1/context/memory/add', { body, ...options });
-  }
 }
 
 export interface MemoryUpdateResponse {
@@ -92,14 +65,6 @@ export interface MemoryUpdateResponse {
   success: boolean;
 
   updated_entries: number;
-}
-
-export interface MemoryAddResponse {
-  context_id: string;
-
-  success: boolean;
-
-  processed_documents?: number;
 }
 
 export interface MemoryUpdateParams {
@@ -170,65 +135,10 @@ export interface MemoryDeleteParams {
   user_id?: string | null;
 }
 
-export interface MemoryAddParams {
-  /**
-   * Array of content objects with metadata
-   */
-  contents: Array<MemoryAddParams.Content>;
-
-  /**
-   * The ID of the memory
-   */
-  memoryId: string;
-
-  /**
-   * Optional metadata with groupName defaulting to ["default"]
-   */
-  metadata?: MemoryAddParams.Metadata;
-}
-
-export namespace MemoryAddParams {
-  export interface Content {
-    /**
-     * The content of the memory message
-     */
-    content: string;
-
-    metadata: Content.Metadata;
-
-    [k: string]: unknown;
-  }
-
-  export namespace Content {
-    export interface Metadata {
-      /**
-       * Unique message ID
-       */
-      messageId: string;
-
-      [k: string]: unknown;
-    }
-  }
-
-  /**
-   * Optional metadata with groupName defaulting to ["default"]
-   */
-  export interface Metadata {
-    /**
-     * Group names for the memory context
-     */
-    groupName?: Array<string>;
-
-    [k: string]: unknown;
-  }
-}
-
 export declare namespace Memory {
   export {
     type MemoryUpdateResponse as MemoryUpdateResponse,
-    type MemoryAddResponse as MemoryAddResponse,
     type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
-    type MemoryAddParams as MemoryAddParams,
   };
 }

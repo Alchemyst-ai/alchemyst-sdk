@@ -43,13 +43,11 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/v1/context/memory.ts">MemoryUpdateResponse</a></code>
-- <code><a href="./src/resources/v1/context/memory.ts">MemoryAddResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/context/memory/update">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">update</a>({ ...params }) -> MemoryUpdateResponse</code>
 - <code title="post /api/v1/context/memory/delete">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">delete</a>({ ...params }) -> void</code>
-- <code title="post /api/v1/context/memory/add">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">add</a>({ ...params }) -> MemoryAddResponse</code>
 
 ## Org
 
