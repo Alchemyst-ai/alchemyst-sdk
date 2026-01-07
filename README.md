@@ -132,7 +132,18 @@ const client = new AlchemystAI({
 });
 
 // Or, configure per-request:
-await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], scope: 'internal', source: 'platform.api.context.add', metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 } }, {
+await client.v1.context.add({
+  context_type: 'resource',
+  documents: [{ content: 'The content of the document' }],
+  scope: 'internal',
+  source: 'platform.api.context.add',
+  metadata: {
+  fileName: 'notes.txt',
+  fileType: 'text/plain',
+  lastModified: '2025-10-01T18:42:40.419Z',
+  fileSize: 1024,
+},
+}, {
   maxRetries: 5,
 });
 ```
@@ -149,7 +160,18 @@ const client = new AlchemystAI({
 });
 
 // Override per-request:
-await client.v1.context.add({ context_type: 'resource', documents: [{ content: 'The content of the document' }], scope: 'internal', source: 'platform.api.context.add', metadata: { fileName: 'notes.txt', fileType: 'text/plain', lastModified: '2025-10-01T18:42:40.419Z', fileSize: 1024 } }, {
+await client.v1.context.add({
+  context_type: 'resource',
+  documents: [{ content: 'The content of the document' }],
+  scope: 'internal',
+  source: 'platform.api.context.add',
+  metadata: {
+  fileName: 'notes.txt',
+  fileType: 'text/plain',
+  lastModified: '2025-10-01T18:42:40.419Z',
+  fileSize: 1024,
+},
+}, {
   timeout: 5 * 1000,
 });
 ```
