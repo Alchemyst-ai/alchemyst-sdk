@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.1 (2026-01-07)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.9.0...v0.9.1)
+
+### Features
+
+* **api:** api update ([fdf2298](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/fdf229812866988d0d2d53c5d248198bc27b59be))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([f5a051e](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/f5a051e5cc10251e31938bd1f3a1a431995628ae))
+
 ## 0.9.0 (2026-01-06)
 
 Full Changelog: [v0.8.1...v0.9.0](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.8.1...v0.9.0)
