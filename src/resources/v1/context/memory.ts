@@ -70,7 +70,7 @@ export class Memory extends APIResource {
    *         'Customer asked about pricing for the Scale plan.',
    *     },
    *   ],
-   *   memoryId: 'support-thread-TCK-1234',
+   *   sessionId: 'support-thread-TCK-1234',
    * });
    * ```
    */
@@ -171,12 +171,13 @@ export interface MemoryAddParams {
   contents: Array<MemoryAddParams.Content>;
 
   /**
-   * The ID of the memory
+   * The ID of the session
    */
-  memoryId: string;
+  sessionId: string;
 
   /**
-   * Optional metadata for the memory context. Defaults to ["default"]
+   * Optional metadata for the memory context. Defaults to ["default"] if not
+   * provided.
    */
   metadata?: MemoryAddParams.Metadata;
 }
@@ -205,13 +206,12 @@ export namespace MemoryAddParams {
        * Unique message ID
        */
       messageId?: string;
-
-      [k: string]: unknown;
     }
   }
 
   /**
-   * Optional metadata for the memory context. Defaults to ["default"]
+   * Optional metadata for the memory context. Defaults to ["default"] if not
+   * provided.
    */
   export interface Metadata {
     /**
