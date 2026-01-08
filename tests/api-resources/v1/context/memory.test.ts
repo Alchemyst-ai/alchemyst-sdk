@@ -76,7 +76,7 @@ describe('resource memory', () => {
   test.skip('add: only required params', async () => {
     const responsePromise = client.v1.context.memory.add({
       contents: [{ content: 'Customer asked about pricing for the Scale plan.' }],
-      memoryId: 'support-thread-TCK-1234',
+      sessionId: 'support-thread-TCK-1234',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -96,7 +96,7 @@ describe('resource memory', () => {
           metadata: { messageId: 'messageId' },
         },
       ],
-      memoryId: 'support-thread-TCK-1234',
+      sessionId: 'support-thread-TCK-1234',
       metadata: { groupName: ['string'] },
     });
   });
