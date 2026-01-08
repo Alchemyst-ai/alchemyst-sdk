@@ -57,6 +57,26 @@ export class Memory extends APIResource {
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
+
+  /**
+   * This endpoint adds memory (chat history) as context.
+   *
+   * @example
+   * ```ts
+   * const response = await client.v1.context.memory.add({
+   *   contents: [
+   *     {
+   *       content:
+   *         'Customer asked about pricing for the Scale plan.',
+   *     },
+   *   ],
+   *   sessionId: 'support-thread-TCK-1234',
+   * });
+   * ```
+   */
+  add(body: MemoryAddParams, options?: RequestOptions): APIPromise<MemoryAddResponse> {
+    return this._client.post('/api/v1/context/memory/add', { body, ...options });
+  }
 }
 
 export interface MemoryUpdateResponse {
@@ -65,6 +85,14 @@ export interface MemoryUpdateResponse {
   success: boolean;
 
   updated_entries: number;
+}
+
+export interface MemoryAddResponse {
+  context_id: string;
+
+  success: boolean;
+
+  processed_documents?: number;
 }
 
 export interface MemoryUpdateParams {
@@ -135,10 +163,73 @@ export interface MemoryDeleteParams {
   user_id?: string | null;
 }
 
+export interface MemoryAddParams {
+  /**
+   * Array of content objects. Each object must contain at least the 'content' field.
+   * Additional properties are allowed.
+   */
+  contents: Array<MemoryAddParams.Content>;
+
+  /**
+   * The ID of the session
+   */
+  sessionId: string;
+
+  /**
+   * Optional metadata for the memory context. Defaults to ["default"] if not
+   * provided.
+   */
+  metadata?: MemoryAddParams.Metadata;
+}
+
+export namespace MemoryAddParams {
+  export interface Content {
+    /**
+     * The content of the memory message
+     */
+    content: string;
+
+    /**
+     * Additional metadata for the message (optional)
+     */
+    metadata?: Content.Metadata;
+
+    [k: string]: unknown;
+  }
+
+  export namespace Content {
+    /**
+     * Additional metadata for the message (optional)
+     */
+    export interface Metadata {
+      /**
+       * Unique message ID
+       */
+      messageId?: string;
+    }
+  }
+
+  /**
+   * Optional metadata for the memory context. Defaults to ["default"] if not
+   * provided.
+   */
+  export interface Metadata {
+    /**
+     * Optional group names for the memory context. Defaults to ["default"] if not
+     * provided.
+     */
+    groupName?: Array<string>;
+
+    [k: string]: unknown;
+  }
+}
+
 export declare namespace Memory {
   export {
     type MemoryUpdateResponse as MemoryUpdateResponse,
+    type MemoryAddResponse as MemoryAddResponse,
     type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
+    type MemoryAddParams as MemoryAddParams,
   };
 }
