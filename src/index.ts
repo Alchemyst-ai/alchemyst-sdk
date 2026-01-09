@@ -20,9 +20,7 @@ export {
   UnprocessableEntityError,
 } from './core/error';
 
-export { withAlchemyst, getMemory } from './lib/withAlchemyst';
-
-// Export memory types
+export { withAlchemyst, getMemory, clearMemory } from './lib/withAlchemyst';
 export type {
   GenerateTextInput,
   GenerateTextOutput,
