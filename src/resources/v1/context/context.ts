@@ -268,6 +268,11 @@ export interface ContextSearchParams {
    * @deprecated Body param: The ID of the user making the request
    */
   user_id?: string;
+
+  /**
+   * Body param:Group name(s) for hierarchical scoping
+   */
+  groupName?: string | string[];
 }
 
 Context.Traces = Traces;
