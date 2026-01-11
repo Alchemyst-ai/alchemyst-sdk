@@ -51,6 +51,30 @@ Methods:
 - <code title="post /api/v1/context/memory/delete">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">delete</a>({ ...params }) -> void</code>
 - <code title="post /api/v1/context/memory/add">client.v1.context.memory.<a href="./src/resources/v1/context/memory.ts">add</a>({ ...params }) -> MemoryAddResponse</code>
 
+### AddAsync
+
+Types:
+
+- <code><a href="./src/resources/v1/context/add-async/add-async.ts">AddAsyncCreateResponse</a></code>
+- <code><a href="./src/resources/v1/context/add-async/add-async.ts">AddAsyncCancelResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/context/add-async">client.v1.context.addAsync.<a href="./src/resources/v1/context/add-async/add-async.ts">create</a>({ ...params }) -> AddAsyncCreateResponse</code>
+- <code title="delete /api/v1/context/add-async/{id}/cancel">client.v1.context.addAsync.<a href="./src/resources/v1/context/add-async/add-async.ts">cancel</a>(id) -> AddAsyncCancelResponse</code>
+
+#### Status
+
+Types:
+
+- <code><a href="./src/resources/v1/context/add-async/status.ts">StatusRetrieveResponse</a></code>
+- <code><a href="./src/resources/v1/context/add-async/status.ts">StatusListResponse</a></code>
+
+Methods:
+
+- <code title="get /api/v1/context/add-async/{id}/status">client.v1.context.addAsync.status.<a href="./src/resources/v1/context/add-async/status.ts">retrieve</a>(id) -> StatusRetrieveResponse</code>
+- <code title="get /api/v1/context/add-async/status">client.v1.context.addAsync.status.<a href="./src/resources/v1/context/add-async/status.ts">list</a>({ ...params }) -> StatusListResponse</code>
+
 ## Org
 
 ### Context

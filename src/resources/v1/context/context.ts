@@ -14,6 +14,13 @@ import * as TracesAPI from './traces';
 import { TraceDeleteResponse, TraceListParams, TraceListResponse, Traces } from './traces';
 import * as ViewAPI from './view';
 import { View, ViewDocsParams, ViewDocsResponse, ViewRetrieveParams, ViewRetrieveResponse } from './view';
+import * as AddAsyncAPI from './add-async/add-async';
+import {
+  AddAsync,
+  AddAsyncCancelResponse,
+  AddAsyncCreateParams,
+  AddAsyncCreateResponse,
+} from './add-async/add-async';
 import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 
@@ -21,6 +28,7 @@ export class Context extends APIResource {
   traces: TracesAPI.Traces = new TracesAPI.Traces(this._client);
   view: ViewAPI.View = new ViewAPI.View(this._client);
   memory: MemoryAPI.Memory = new MemoryAPI.Memory(this._client);
+  addAsync: AddAsyncAPI.AddAsync = new AddAsyncAPI.AddAsync(this._client);
 
   /**
    * This endpoint deletes context data based on the provided parameters. It returns
@@ -273,6 +281,7 @@ export interface ContextSearchParams {
 Context.Traces = Traces;
 Context.View = View;
 Context.Memory = Memory;
+Context.AddAsync = AddAsync;
 
 export declare namespace Context {
   export {
@@ -306,5 +315,12 @@ export declare namespace Context {
     type MemoryUpdateParams as MemoryUpdateParams,
     type MemoryDeleteParams as MemoryDeleteParams,
     type MemoryAddParams as MemoryAddParams,
+  };
+
+  export {
+    AddAsync as AddAsync,
+    type AddAsyncCreateResponse as AddAsyncCreateResponse,
+    type AddAsyncCancelResponse as AddAsyncCancelResponse,
+    type AddAsyncCreateParams as AddAsyncCreateParams,
   };
 }

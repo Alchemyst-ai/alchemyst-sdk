@@ -1,6 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  AddAsync,
+  type AddAsyncCreateResponse,
+  type AddAsyncCancelResponse,
+  type AddAsyncCreateParams,
+} from './add-async/index';
+export {
   Context,
   type ContextDeleteResponse,
   type ContextAddResponse,
