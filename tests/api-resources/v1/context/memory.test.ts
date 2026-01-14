@@ -12,7 +12,7 @@ describe('resource memory', () => {
   test.skip('update: only required params', async () => {
     const responsePromise = client.v1.context.memory.update({
       contents: [{}, {}],
-      memoryId: 'support-thread-TCK-1234',
+      sessionId: 'support-thread-TCK-1234',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -42,7 +42,7 @@ describe('resource memory', () => {
           role: 'assistant',
         },
       ],
-      memoryId: 'support-thread-TCK-1234',
+      sessionId: 'support-thread-TCK-1234',
     });
   });
 

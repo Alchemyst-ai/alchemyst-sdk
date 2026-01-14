@@ -30,7 +30,7 @@ export class Memory extends APIResource {
    *       createdAt: '2025-01-10T12:36:00.000Z',
    *     },
    *   ],
-   *   memoryId: 'support-thread-TCK-1234',
+   *   sessionId: 'support-thread-TCK-1234',
    * });
    * ```
    */
@@ -104,7 +104,7 @@ export interface MemoryUpdateParams {
   /**
    * The ID of the memory to update
    */
-  memoryId: string;
+  sessionId: string;
 }
 
 export namespace MemoryUpdateParams {
