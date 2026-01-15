@@ -26,7 +26,12 @@
     "lint": "./scripts/lint",
     "fix": "./scripts/format"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/node-fetch": "^2.6.13",
+    "node-fetch": "^3.3.2",
+    "undici": "^7.18.2",
+    "undici-types": "^7.18.2"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.0",
     "@swc/core": "^1.3.102",
