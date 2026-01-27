@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.11.2 (2026-01-27)
+
+Full Changelog: [v0.11.1...v0.11.2](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.11.1...v0.11.2)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([ef777aa](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/ef777aacb5b479d6cfa0fbf1d6cbea145cf7301e))
+* **internal:** update `actions/checkout` version ([a618855](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/a6188557ca30da2d6e90c487ada5e32757123d2f))
+* **internal:** upgrade babel, qs, js-yaml ([7031011](https://github.com/Alchemyst-ai/alchemyst-sdk/commit/7031011128ce269406b1f7fe67c99130cb719ec4))
+
 ## 0.11.1 (2026-01-14)
 
 Full Changelog: [v0.11.0...v0.11.1](https://github.com/Alchemyst-ai/alchemyst-sdk/compare/v0.11.0...v0.11.1)
